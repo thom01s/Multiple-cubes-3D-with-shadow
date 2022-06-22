@@ -175,8 +175,8 @@ int setupMesh(string path)
 			geometryBuffer.push_back(nz);
 
 			//recupera s, t (coord textura)
-			float s = texCoords[(int)vertIndices[i][j]].x;
-			float t = texCoords[(int)vertIndices[i][j]].y;
+			float s = texCoords[(int)texIndices[i][j] - 1].x;
+			float t = texCoords[(int)texIndices[i][j] - 1].y;
 			geometryBuffer.push_back(s);
 			geometryBuffer.push_back(t);
 		}
@@ -243,8 +243,8 @@ int loadTexture(string path)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	//Carregamento da imagem
 	int width, height, nrChannels;

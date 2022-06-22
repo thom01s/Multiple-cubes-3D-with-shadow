@@ -143,11 +143,14 @@ int main()
 	// Read our .obj file
 	GLuint VAO = setupMesh("../Cube.obj");
 	GLuint texID = loadTexture("../Cube.png");
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texID);
 	/*Objeto novoObjeto = setupMesh("....");
 	objetos.push_back(novoObjeto);
 
 	novoObjeto = setupMesh("....");
 	... */
+
 
 	glUseProgram(shader.ID);
 
@@ -242,8 +245,7 @@ int main()
 
 		glUniform1i(glGetUniformLocation(shader.ID, "tex_coord"), 0);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texID);
+
 
 		// Chamada de desenho - drawcall
 		// Poligono Preenchido - GL_TRIANGLES
@@ -267,6 +269,37 @@ int main()
 		{
 			for (int j = 0; j < 5; j++)
 			{
+				if (j == 0) {
+
+					texID = loadTexture("../0.png");
+					glActiveTexture(GL_TEXTURE0);
+					glBindTexture(GL_TEXTURE_2D, texID);
+				}
+				if (j == 1) {
+
+					texID = loadTexture("../1.png");
+					glActiveTexture(GL_TEXTURE0);
+					glBindTexture(GL_TEXTURE_2D, texID);
+				}
+				if (j == 2) {
+
+					texID = loadTexture("../2.png");
+					glActiveTexture(GL_TEXTURE0);
+					glBindTexture(GL_TEXTURE_2D, texID);
+				}
+				if (j == 3) {
+
+					texID = loadTexture("../3.png");
+					glActiveTexture(GL_TEXTURE0);
+					glBindTexture(GL_TEXTURE_2D, texID);
+				}
+				if (j == 4) {
+
+					texID = loadTexture("../4.png");
+					glActiveTexture(GL_TEXTURE0);
+					glBindTexture(GL_TEXTURE_2D, texID);
+				}
+				glUniform1i(glGetUniformLocation(shader.ID, "tex_coord"), 0);
 				shader.setFloat("ks", kss[i]);
 				shader.setFloat("n", ns[j]);
 				glm::mat4 model = glm::mat4(1);
